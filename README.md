@@ -40,6 +40,7 @@ A user-friendly interface, in the form of a dashboard or mobile app, will offer 
 
 ## Images
 
-[Image of catalytic converter]([https://example.com/catalytic_converter.jpg](https://www.researchgate.net/profile/Jack-Voncken/publication/337203725/figure/fig1/AS:835615704760321@1576237717109/Schematic-image-of-a-three-way-automotive-catalytic-converter-HC-Hydrocarbons.png)https://www.researchgate.net/profile/Jack-Voncken/publication/337203725/figure/fig1/AS:835615704760321@1576237717109/Schematic-image-of-a-three-way-automotive-catalytic-converter-HC-Hydrocarbons.png)
+![Schematic-image-of-a-three-way-automotive-catalytic-converter-HC-Hydrocarbons](https://github.com/Anshul-13J/Volkswagen-IT-Challenge/assets/74321084/9ec344ff-c38d-4343-bd69-48f442ef34df)
+
 
 
