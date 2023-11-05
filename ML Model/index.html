@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine Learning Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(180deg, #4A90E2, #7C3AED);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        form:hover {
+            transform: scale(1.05);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        input[type="text"]:hover {
+            transform: scale(1.03);
+        }
+
+        button[type="submit"] {
+            background: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        p#prediction-result {
+            text-align: center;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Health Predictor (This data will be supplied by the sensors)</h1>
+    <form method="POST" action="/predict">
+        <label for="NO">NO:</label>
+        <input type="text" id="NO" name="NO">
+
+        <label for="NO2">NO2:</label>
+        <input type="text" id="NO2" name="NO2">
+
+        <label for="NOx">NOx:</label>
+        <input type="text" id="NOx" name="NOx">
+
+        <label for="CO">CO:</label>
+        <input type="text" id="CO" name="CO">
+
+        <label for="SO2">SO2:</label>
+        <input type="text" id="SO2" name="SO2">
+
+        <label for="Benzene">Benzene:</label>
+        <input type="text" id="Benzene" name="Benzene">
+
+        <button type="submit">Predict</button>
+    </form>
+    <p id="prediction-result"></p>
+
+    <!-- JavaScript for animations -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const NO = document.querySelector('#NO').value;
+            const NO2 = document.querySelector('#NO2').value;
+            const NOx = document.querySelector('#NOx').value;
+            const CO = document.querySelector('#CO').value;
+            const SO2 = document.querySelector('#SO2').value;
+            const Benzene = document.querySelector('#Benzene').value;
+
+            axios.post('/predict', {
+                NO: NO,
+                NO2: NO2,
+                NOx: NOx,
+                CO: CO,
+                SO2: SO2,
+                Benzene: Benzene
+            })
+            .then(function(response) {
+                const predictions = response.data.predictions;
+
+                if (predictions && predictions.length > 0) {
+                    document.querySelector('#prediction-result').textContent = `Predicted Analysis: ${predictions[0]}`;
+                } else {
+                    document.querySelector('#prediction-result').textContent = "No predictions available";
+                }
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+        });
+    </script>
+</body>
+</html>
